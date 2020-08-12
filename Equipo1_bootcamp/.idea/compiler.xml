@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Equipo1_Selenium" />
+        <module name="Equipo1_bootcamp" />
       </profile>
     </annotationProcessing>
   </component>
