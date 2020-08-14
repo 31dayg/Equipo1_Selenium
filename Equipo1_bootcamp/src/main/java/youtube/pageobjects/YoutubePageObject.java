@@ -15,11 +15,14 @@ public class YoutubePageObject {
     @FindBy(how = How.ID, using = "search-icon-legacy")
     private WebElement searchButton;
 
-    @FindBy(how = How.XPATH, using = "//div[@class='style-scope ytd-item-section-renderer']/descendant::ytd-video-renderer")
-    private List<WebElement> resultsList;
+    @FindBy(how = How.XPATH, using = "//div/descendant::ytd-video-renderer/div/div/div/div/h3/a")
+    private List<WebElement> resultsListTitles;
 
-    @FindBy(how = How.NAME, using = "btnK")
-    private WebElement seacrhInGoogleButton;
+    @FindBy(how = How.XPATH, using = "//yt-icon-button[@id='guide-button']/button/yt-icon[@class='style-scope ytd-masthead']")
+    private WebElement HamburguerButton;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='buttons']/ytd-button-renderer/a/paper-button/yt-icon")
+    private WebElement accederButton;
 
 
 }
