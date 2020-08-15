@@ -9,6 +9,8 @@ import java.util.List;
 
 public class YoutubePageObject {
 
+    // DEFINIR ELEMENTOS DE HEADER Y DE LEFT MENU
+
     @FindBy(how = How.XPATH, using = "//input[@id = 'search']")
     private WebElement searchBox;
 
@@ -16,13 +18,12 @@ public class YoutubePageObject {
     private WebElement searchButton;
 
     @FindBy(how = How.XPATH, using = "//div/descendant::ytd-video-renderer/div/div/div/div/h3/a")
-    private List<WebElement> resultsListTitles;
+    private List<WebElement> resultSearchList;
 
     @FindBy(how = How.XPATH, using = "//yt-icon-button[@id='guide-button']/button/yt-icon[@class='style-scope ytd-masthead']")
     private WebElement HamburguerButton;
 
     @FindBy(how = How.XPATH, using = "//div[@id='buttons']/ytd-button-renderer/a/paper-button/yt-icon")
-    private WebElement accederButton;
-
+    private WebElement loginButton;
 
 }
