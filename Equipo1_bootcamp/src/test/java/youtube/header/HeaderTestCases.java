@@ -62,6 +62,18 @@ public class HeaderTestCases extends BaseTestCase {
     }*/
 
     @Test
+    @Description("Verificar que el valor dado en el buscador se mantenga despues de seleccionar el boton YouTube o algun video de la busqueda.")
+    @Story("Probar que se mantiene el valor")
+    public void test5_ValueInSearch() {
+        this.myDriver.get("https://www.youtube.com/");
+
+        SoftAssert softAssertion = new SoftAssert();
+        YoutubeUserSteps youtubeUserSteps = new YoutubeUserSteps(this.myDriver);
+        youtubeUserSteps.searchVideo("Selenium");
+        youtubeUserSteps.selectVideotoWatch(12);
+    }
+
+    @Test
     @Description("Validar que al ingresar el signo de \"?\", el buscador de youtube aparezaca los titulos recomendados")
     @Story("Probar titulos recomendados")
     public void test6_RecommendationSearch() {
