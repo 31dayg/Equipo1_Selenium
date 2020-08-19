@@ -73,6 +73,32 @@ public class HeaderTestCases extends BaseTestCase {
         youtubeUserSteps.selectVideotoWatch(12);
     }
 
+    @Test
+    @Description("Validar que al ingresar caracteres especiales, en el buscador de youtube, aparezca una lista de recomendaciones")
+    @Story("Probar caracteres especiales")
+    public void test7_SpecialSearch() {
+        this.myDriver.get("https://www.youtube.com/");
+
+        SoftAssert softAssertion = new SoftAssert();
+        YoutubeUserSteps youtubeUserSteps = new YoutubeUserSteps(this.myDriver);
+        youtubeUserSteps.searchVideo("Selenium");
+        youtubeUserSteps.selectVideotoWatch(12);
+    }
+
+    @Test
+    @Description("Validar, la busqueda de titulos en ingles")
+    @Story("Probar titulos en ingles")
+    public void test8_LanguageSearch() {
+        this.myDriver.get("https://www.youtube.com/");
+
+        SoftAssert softAssertion = new SoftAssert();
+        YoutubeUserSteps youtubeUserSteps = new YoutubeUserSteps(this.myDriver);
+        youtubeUserSteps.searchVideo("Selenium");
+        youtubeUserSteps.selectVideotoWatch(12);
+    }
+
+
+
 
 
 
