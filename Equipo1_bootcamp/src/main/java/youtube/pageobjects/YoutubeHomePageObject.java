@@ -41,7 +41,7 @@ public class YoutubeHomePageObject extends BasePageObject {
 
     // AQUI VAN LOS ELEMENTOS DEL MAIN AREA EN HOME.
 
-    public YoutubeResultsPageObject(WebDriver driver, String baseURL) {
+    public YoutubeHomePageObject(WebDriver driver, String baseURL) {
         super(driver, baseURL);
     }
 
