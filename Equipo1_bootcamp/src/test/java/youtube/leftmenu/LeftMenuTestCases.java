@@ -3,10 +3,7 @@ package youtube.leftmenu;
 import com.sun.org.glassfish.gmbal.Description;
 import youtube.BaseTestCase;
 import io.qameta.allure.Story;
-import org.aspectj.lang.SoftException;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
-import youtube.steps.YoutubeUserSteps;
 
 public class LeftMenuTestCases extends BaseTestCase {
     @Test

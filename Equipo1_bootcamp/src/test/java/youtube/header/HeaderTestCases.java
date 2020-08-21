@@ -2,11 +2,10 @@ package youtube.header;
 
 import com.sun.org.glassfish.gmbal.Description;
 import io.qameta.allure.Story;
-import org.aspectj.lang.SoftException;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import youtube.BaseTestCase;
-import youtube.steps.YoutubeUserSteps;
+import youtube.steps.YoutubeUserStepsMain;
 
 public class HeaderTestCases extends BaseTestCase {
 
@@ -17,10 +16,10 @@ public class HeaderTestCases extends BaseTestCase {
         this.myDriver.get("https://www.youtube.com/");
 
         SoftAssert softAssertion = new SoftAssert();
-        YoutubeUserSteps youtubeUserSteps = new YoutubeUserSteps(this.myDriver);
+        YoutubeUserStepsMain youtubeUserSteps = new YoutubeUserStepsMain(this.myDriver);
         System.out.println("Lista de videos encontrados por busqueda: \n");
         youtubeUserSteps.resultsList("Selenium");
-
+        // Checar que los titulos tengan la palabra Selenium.
         softAssertion.assertEquals(myDriver.getCurrentUrl(), "https://www.youtube.com/");
     }
 
@@ -31,7 +30,7 @@ public class HeaderTestCases extends BaseTestCase {
         this.myDriver.get("https://www.youtube.com/");
 
         SoftAssert softAssertion = new SoftAssert();
-        YoutubeUserSteps youtubeUserSteps = new YoutubeUserSteps(this.myDriver);
+        YoutubeUserStepsMain youtubeUserSteps = new YoutubeUserStepsMain(this.myDriver);
 
         youtubeUserSteps.leftMenu();
         //Me falta ver como validar esta parte. Sacar los valores del menu?
@@ -45,7 +44,7 @@ public class HeaderTestCases extends BaseTestCase {
         this.myDriver.get("https://www.youtube.com/");
 
         SoftAssert softAssertion = new SoftAssert();
-        YoutubeUserSteps youtubeUserSteps = new YoutubeUserSteps(this.myDriver);
+        YoutubeUserStepsMain youtubeUserSteps = new YoutubeUserStepsMain(this.myDriver);
         youtubeUserSteps.userLogin();
 
         softAssertion.assertEquals(myDriver.getCurrentUrl(), "https://accounts.google.com/signin");
@@ -68,7 +67,7 @@ public class HeaderTestCases extends BaseTestCase {
         this.myDriver.get("https://www.youtube.com/");
 
         SoftAssert softAssertion = new SoftAssert();
-        YoutubeUserSteps youtubeUserSteps = new YoutubeUserSteps(this.myDriver);
+        YoutubeUserStepsMain youtubeUserSteps = new YoutubeUserStepsMain(this.myDriver);
         youtubeUserSteps.searchVideo("Selenium");
         youtubeUserSteps.selectVideotoWatch(12);
     }
@@ -80,7 +79,7 @@ public class HeaderTestCases extends BaseTestCase {
         this.myDriver.get("https://www.youtube.com/");
 
         SoftAssert softAssertion = new SoftAssert();
-        YoutubeUserSteps youtubeUserSteps = new YoutubeUserSteps(this.myDriver);
+        YoutubeUserStepsMain youtubeUserSteps = new YoutubeUserStepsMain(this.myDriver);
         youtubeUserSteps.searchVideo("Selenium");
         youtubeUserSteps.selectVideotoWatch(12);
     }
@@ -92,7 +91,7 @@ public class HeaderTestCases extends BaseTestCase {
         this.myDriver.get("https://www.youtube.com/");
 
         SoftAssert softAssertion = new SoftAssert();
-        YoutubeUserSteps youtubeUserSteps = new YoutubeUserSteps(this.myDriver);
+        YoutubeUserStepsMain youtubeUserSteps = new YoutubeUserStepsMain(this.myDriver);
         youtubeUserSteps.searchVideo("Selenium");
         youtubeUserSteps.selectVideotoWatch(12);
     }
@@ -104,7 +103,7 @@ public class HeaderTestCases extends BaseTestCase {
         this.myDriver.get("https://www.youtube.com/");
 
         SoftAssert softAssertion = new SoftAssert();
-        YoutubeUserSteps youtubeUserSteps = new YoutubeUserSteps(this.myDriver);
+        YoutubeUserStepsMain youtubeUserSteps = new YoutubeUserStepsMain(this.myDriver);
         youtubeUserSteps.searchVideo("Selenium");
         youtubeUserSteps.selectVideotoWatch(12);
     }

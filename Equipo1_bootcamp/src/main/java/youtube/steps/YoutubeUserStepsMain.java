@@ -5,13 +5,13 @@ import youtube.pageobjects.YoutubePageObject;
 
 // Capa de steps. tiene que tener metodos de mas alto nivel que simulen nivel de usuario.
 
-public class YoutubeUserSteps {
+public class YoutubeUserStepsMain {
 
     // HEADER
 
     private YoutubePageObject youtubePageObject;
 
-    public YoutubeUserSteps (WebDriver driver) {
+    public YoutubeUserStepsMain(WebDriver driver) {
         this.youtubePageObject = new YoutubePageObject(driver);
     }
 
@@ -38,7 +38,7 @@ public class YoutubeUserSteps {
         return this.youtubePageObject.noResultsFound();
     }
 
-    public void selectVideotoWatch(int index) {
+    public void clickTitleVideo(int index) {
         this.youtubePageObject.clickOnSelectedVideo(index);
     }
 
