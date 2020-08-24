@@ -4,6 +4,7 @@ import com.sun.org.glassfish.gmbal.Description;
 import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import utils.PropertyReader;
 import youtube.BaseTestCase;
 import youtube.steps.YoutubeUserStepsMain;
 
@@ -15,7 +16,8 @@ public class HeaderTestCases extends BaseTestCase {
     @Description("Un usuario sin iniciar sesion quiere buscar un video.")
     @Story("Probar la busqueda de Youtube")
     public void test1_SearchVideo() {
-        this.myDriver.get("https://www.youtube.com/");
+        //this.myDriver.get("https://www.youtube.com/");
+        this.myDriver.get(PropertyReader.getProperty("youtube.properties", "YOUTUBE_URL"));
 
         SoftAssert softAssertion = new SoftAssert();
         YoutubeUserStepsMain youtubeUserSteps = new YoutubeUserStepsMain(this.myDriver);
@@ -30,7 +32,8 @@ public class HeaderTestCases extends BaseTestCase {
     @Description("Validar el hamburguer button que pueda desplegar el menu y ocultarlo")
     @Story("Probar que el boton de hamburguesa funcione")
     public void test2_HamburgerButtonWorks() {
-        this.myDriver.get("https://www.youtube.com/");
+        //this.myDriver.get("https://www.youtube.com/");
+        this.myDriver.get(PropertyReader.getProperty("youtube.properties", "YOUTUBE_URL"));
 
         SoftAssert softAssertion = new SoftAssert();
         YoutubeUserStepsMain youtubeUserSteps = new YoutubeUserStepsMain(this.myDriver);
@@ -45,7 +48,8 @@ public class HeaderTestCases extends BaseTestCase {
     @Description("Un usuario puede inciar sesion.")
     @Story("Probar el boton acceder")
     public void test3_LoginButton() {
-        this.myDriver.get("https://www.youtube.com/");
+        //this.myDriver.get("https://www.youtube.com/");
+        this.myDriver.get(PropertyReader.getProperty("youtube.properties", "YOUTUBE_URL"));
 
         SoftAssert softAssertion = new SoftAssert();
         YoutubeUserStepsMain youtubeUserSteps = new YoutubeUserStepsMain(this.myDriver);
@@ -59,7 +63,8 @@ public class HeaderTestCases extends BaseTestCase {
     @Description("Verificar mensaje cuando no se encontraron resultados ")
     @Story("Probar que no se encontro resultados")
     public void test4_ResultNotFound() {
-        this.myDriver.get("https://www.youtube.com/");
+        //this.myDriver.get("https://www.youtube.com/");
+        this.myDriver.get(PropertyReader.getProperty("youtube.properties", "YOUTUBE_URL"));
         YoutubeUserStepsMain youtubeUserSteps = new YoutubeUserStepsMain(this.myDriver);
         SoftAssert softAssertion = new SoftAssert();
 
@@ -72,7 +77,8 @@ public class HeaderTestCases extends BaseTestCase {
     @Description("Verificar que el boton \"YouTube\" regrese al inicio.")
     @Story("Probar el icono 'Youtube' regrese al inicio")
     public void test5_youtubeIcon() {
-        this.myDriver.get("https://www.youtube.com/");
+        //this.myDriver.get("https://www.youtube.com/");
+        this.myDriver.get(PropertyReader.getProperty("youtube.properties", "YOUTUBE_URL"));
 
         SoftAssert softAssertion = new SoftAssert();
         YoutubeUserStepsMain youtubeUserSteps = new YoutubeUserStepsMain(this.myDriver);
@@ -84,7 +90,8 @@ public class HeaderTestCases extends BaseTestCase {
     @Description("Validar que se muestre el contenedor de busquedas relacionadas")
     @Story("Probar titulos recomendados")
     public void test6_RecommendationSearch() {
-        this.myDriver.get("https://www.youtube.com/");
+        //this.myDriver.get("https://www.youtube.com/");
+        this.myDriver.get(PropertyReader.getProperty("youtube.properties", "YOUTUBE_URL"));
 
         SoftAssert softAssertion = new SoftAssert();
         YoutubeUserStepsMain youtubeUserSteps = new YoutubeUserStepsMain(this.myDriver);
@@ -99,7 +106,8 @@ public class HeaderTestCases extends BaseTestCase {
     @Description("Validar, la busqueda de titulos en ingles")
     @Story("Probar titulos en ingles")
     public void test7_LanguageSearch() throws InterruptedException {
-        this.myDriver.get("https://www.youtube.com/");
+        //this.myDriver.get("https://www.youtube.com/");
+        this.myDriver.get(PropertyReader.getProperty("youtube.properties", "YOUTUBE_URL"));
 
         SoftAssert softAssertion = new SoftAssert();
         YoutubeUserStepsMain youtubeUserSteps = new YoutubeUserStepsMain(this.myDriver);
