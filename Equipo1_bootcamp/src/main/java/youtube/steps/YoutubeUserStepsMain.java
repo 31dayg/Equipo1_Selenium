@@ -23,10 +23,10 @@ public class YoutubeUserStepsMain {
     public void resultsList(String word) {
         this.youtubePageObject.sendKeysinSearchBox(word);
         this.youtubePageObject.clickOnSearchButton();
-        this.youtubePageObject.getResoultSearchList();
+        this.youtubePageObject.getResultSearchList();
     }
 
-    public void leftMenu() {
+    public void getLeftMenu() {
         this.youtubePageObject.clickOnHamburgerButton();
     }
 
@@ -34,12 +34,36 @@ public class YoutubeUserStepsMain {
         this.youtubePageObject.clickOnLoginButton();
     }
 
-    public boolean noResultsFound() {
+    public void clickTitleVideo(int index) {
+        this.youtubePageObject.clickOnSelectedVideo(index);
+    }
+
+    public int videoContainsSearchVideo() {
+        return this.youtubePageObject.getTotalVideosRelated();
+    }
+
+    public boolean getHamburgerButtonIsPressed() {
+        return this.youtubePageObject.hamburgerButtonIsPressed();
+    }
+
+    public boolean getNotResultsFound() {
         return this.youtubePageObject.noResultsFound();
     }
 
-    public void clickTitleVideo(int index) {
-        this.youtubePageObject.clickOnSelectedVideo(index);
+    public boolean getRelatedSearchContainer() {
+        return this.youtubePageObject.lookForSearchRelated();
+    }
+
+    public void returnHome(String word) {
+        this.youtubePageObject.sendKeysinSearchBox(word);
+        this.youtubePageObject.clickOnSearchButton();
+        this.youtubePageObject.clickOnYoutubeIcon();
+
+    }
+
+    public boolean getIfVideoIsPlaying() {
+
+        return this.youtubePageObject.isVideoPlaying();
     }
 
 
