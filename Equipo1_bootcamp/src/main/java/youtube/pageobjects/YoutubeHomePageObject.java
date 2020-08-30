@@ -23,7 +23,7 @@ public class YoutubeHomePageObject extends BasePageObject {
     @FindBy(how = How.XPATH, using = "//div[@id='contents']//div[@id='dismissable']")
     private List<WebElement> contentVideoList;
 
-    @FindBy(how = How.XPATH, using = "//yt-formatted-string[contains(text(),'Tendencias')]")
+    @FindBy(how = How.XPATH, using = "//yt-formatted-string[contains(text(),'Trending')]")
     private WebElement trendingOption;
 
     @FindBy(how = How.XPATH, using = "//div[@id='sub-menu']//div[@id='contents']//*[a]")

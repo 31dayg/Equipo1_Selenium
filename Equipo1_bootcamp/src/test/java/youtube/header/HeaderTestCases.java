@@ -2,14 +2,17 @@ package youtube.header;
 
 import com.sun.org.glassfish.gmbal.Description;
 import io.qameta.allure.Story;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import utils.PropertyReader;
+import utils.listeners.TestListener;
 import youtube.BaseTestCase;
 import youtube.steps.YoutubeUserStepsMain;
 
 import java.util.concurrent.TimeUnit;
 
+@Listeners({ TestListener.class})
 public class HeaderTestCases extends BaseTestCase {
 
     @Test
