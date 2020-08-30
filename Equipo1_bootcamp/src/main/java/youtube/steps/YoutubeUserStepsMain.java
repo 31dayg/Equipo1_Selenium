@@ -86,32 +86,36 @@ public class YoutubeUserStepsMain {
         return this.youtubeHomePageObject.TrendingTitleIsDisplayed();
     }
 
-    public void getTrendingCategory () throws InterruptedException {
-        this.youtubeHomePageObject.redirectsTrendingCategory();
+    public int getTrendingCategory () throws InterruptedException {
+        return this.youtubeHomePageObject.redirectsTrendingCategory();
     }
 
-    public void getMusicTrendingCategory() throws InterruptedException {
-        this.youtubeHomePageObject.redirectsMusicPage();
+    public String getMusicTrendingCategory() throws InterruptedException {
+        return this.youtubeHomePageObject.redirectsMusicPage();
     }
 
-    public void getGamingTrendingCategory() throws InterruptedException {
-        this.youtubeHomePageObject.redirectsGaminPage();
+    public String getGamingTrendingCategory() throws InterruptedException {
+        return this.youtubeHomePageObject.redirectsGaminPage();
     }
 
-    public void getNewsTrendingCategory() throws InterruptedException {
-        this.youtubeHomePageObject.redirectsNewsPage();
+    public String getNewsTrendingCategory() throws InterruptedException {
+        return this.youtubeHomePageObject.redirectsNewsPage();
     }
 
-    public void getMoviesTrendingCategory() throws InterruptedException {
-        this.youtubeHomePageObject.redirectsMoviesPage();
+    public String getMoviesTrendingCategory() throws InterruptedException {
+        return this.youtubeHomePageObject.redirectsMoviesPage();
     }
 
-    public void getLibraryCategory() throws InterruptedException {
-        this.youtubeHomePageObject.redirectsLibraryPage();
+    public String getSusbcriptionsCategory() throws InterruptedException{
+        return this.youtubeHomePageObject.redirectsSubscriptionPage();
     }
 
-    public void getHistoryCategory() throws InterruptedException {
-        this.youtubeHomePageObject.redirectsHistoryPage();
+    public String getLibraryCategory() throws InterruptedException {
+        return this.youtubeHomePageObject.redirectsLibraryPage();
+    }
+
+    public String getHistoryCategory() throws InterruptedException {
+        return this.youtubeHomePageObject.redirectsHistoryPage();
     }
 
 
