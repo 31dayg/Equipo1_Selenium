@@ -18,10 +18,12 @@ public class YoutubeHomePageObject extends BasePageObject {
     private WebElement homeOption;
 
     @FindBy (how = How.XPATH,using = "//div[@id='contents']//div[@id='rich-shelf-header']//span")
-    //private WebElement titleTrending;
     private List<WebElement> titlesInMain;
 
-    @FindBy(how = How.XPATH, using = "//ytd-mini-guide-entry-renderer[2]//a[1]")
+    @FindBy(how = How.XPATH, using = "//div[@id='contents']//div[@id='dismissable']")
+    private List<WebElement> contentVideoList;
+
+    @FindBy(how = How.XPATH, using = "//yt-formatted-string[contains(text(),'Tendencias')]")
     private WebElement trendingOption;
 
     @FindBy(how = How.XPATH, using = "//div[@id='sub-menu']//div[@id='contents']//*[a]")
@@ -30,13 +32,13 @@ public class YoutubeHomePageObject extends BasePageObject {
     @FindBy(how = How.XPATH, using = "//ytd-channel-list-sub-menu-avatar-renderer[1]//a[1]")
     private WebElement musicOption;
 
-    @FindBy(how = How.XPATH, using = "//ytd-text-header-renderer[contains(text(),'Videojuegos')]")
+    @FindBy(how = How.XPATH, using = "//ytd-text-header-renderer[contains(text(),'Música')]")
     private WebElement musicOptionTitle;
 
     @FindBy(how = How.XPATH, using = "//ytd-channel-list-sub-menu-avatar-renderer[2]//a[1]")
     private WebElement gaminOption;
 
-    @FindBy(how = How.XPATH, using = "//ytd-text-header-renderer[contains(text(),'Música')]")
+    @FindBy(how = How.XPATH, using = "//ytd-text-header-renderer[contains(text(),'Videojuegos')]")
     private WebElement gaminOptionTitle;
 
     @FindBy(how = How.XPATH, using = "//ytd-channel-list-sub-menu-avatar-renderer[3]//a[1]")
@@ -51,22 +53,22 @@ public class YoutubeHomePageObject extends BasePageObject {
     @FindBy(how = How.XPATH, using = "//ytd-text-header-renderer[contains(text(),'Películas')]")
     private WebElement moviesOptionTitle;
 
-    @FindBy(how = How.XPATH, using = "//ytd-mini-guide-entry-renderer[3]//a[1]")
+    @FindBy(how = How.XPATH, using = "//yt-formatted-string[contains(text(),'Suscripciones')]")
     private WebElement subscriptionsOption;
 
-    @FindBy(how = How.XPATH, using = "")
+    @FindBy(how = How.XPATH, using = "//div[contains(text(),'No te pierdas los nuevos videos')]")
     private WebElement subscriptionsMessage;
 
-    @FindBy(how = How.XPATH, using = "//ytd-guide-entry-renderer[@id='header-entry']//a[@id='endpoint']")
+    @FindBy(how = How.XPATH, using = "//yt-formatted-string[contains(text(),'Biblioteca')]")
     private WebElement libraryOption;
 
-    @FindBy(how = How.XPATH, using = "")
+    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Disfruta de tus videos favoritos')]")
     private WebElement libraryMessage;
 
-    @FindBy(how = How.XPATH, using = "//ytd-mini-guide-entry-renderer[5]//a[1]")
+    @FindBy(how = How.XPATH, using = "//yt-formatted-string[contains(text(),'Historial')]")
     private WebElement historyOption;
 
-    @FindBy(how = How.XPATH, using = "")
+    @FindBy(how = How.XPATH, using = "//yt-formatted-string[@id='message']")
     private WebElement historyMessage;
 
     @FindBy(how = How.XPATH, using = "//ytd-item-section-renderer[1]//div[3]//ytd-shelf-renderer[1]//div[1]//div[2]//ytd-expanded-shelf-contents-renderer[1]//div[1]//ytd-video-renderer")
@@ -120,80 +122,122 @@ public class YoutubeHomePageObject extends BasePageObject {
     }
 
 
-    public void redirectsTrendingCategory() throws InterruptedException {
-        if(this.trendingOption.isDisplayed() && this.trendingOption.isEnabled()){
+    public int redirectsTrendingCategory() throws InterruptedException {
+
+        if (this.trendingOption.isDisplayed() && this.trendingOption.isEnabled()) {
+            this.trendingOption.click();
+            Thread.sleep(3000);
+            ArrayList<String> results = new ArrayList<>();
+            for (WebElement element : this.subOptionsTrending) {
+                System.out.println("Opciones dentro de Tendencias:" + element.getText());
+                results.add(element.getText());
+            }
+            int x = 0;
+            int totalIcons = 0;
+            while (x < results.size()) {
+                if (results.get(x).contains("Musica") && results.get(x).contains("Videojuegos") && results.get(x).contains("Noticias") && results.get(x).contains("Películas")) {
+                    totalIcons++;
+                }
+                x++;
+            }
+            return totalIcons;
+        }
+        return 0;
+    }
+
+    public String redirectsMusicPage() throws InterruptedException {
+        String titlemusic = null;
+        if (this.trendingOption.isDisplayed() && this.trendingOption.isEnabled()) {
             this.trendingOption.click();
 
             Thread.sleep(3000);
-            int i = 0;
-            while (i < subOptionsTrending.size()) {
-                System.out.println(subOptionsTrending.get(i).getText());
-                i++;
+            if (this.musicOption.isDisplayed() && this.musicOption.isEnabled()) {
+                this.musicOption.click();
+                titlemusic = this.musicOptionTitle.getText();
             }
         }
+        return titlemusic;
     }
 
-    public void redirectsMusicPage() throws InterruptedException {
+    public String redirectsGaminPage() throws InterruptedException {
+        String titleGamingPage = null;
+
         if (this.trendingOption.isDisplayed() && this.trendingOption.isEnabled()) {
             this.trendingOption.click();
 
             Thread.sleep(3000);
-            this.musicOption.click();
-            this.musicOptionTitle.getText();
+            if (this.gaminOption.isDisplayed() && this.gaminOption.isEnabled()) {
+                this.gaminOption.click();
+                titleGamingPage = this.gaminOptionTitle.getText();
+            }
         }
+        return titleGamingPage;
     }
 
-    public void redirectsGaminPage() throws InterruptedException {
+    public String redirectsNewsPage() throws InterruptedException {
+        String titleNewsPage= null;
         if (this.trendingOption.isDisplayed() && this.trendingOption.isEnabled()) {
             this.trendingOption.click();
 
             Thread.sleep(3000);
-            this.gaminOption.click();
-            this.gaminOptionTitle.getText();
-        }
-    }
-
-    public void redirectsNewsPage() throws InterruptedException {
-        if (this.trendingOption.isDisplayed() && this.trendingOption.isEnabled()) {
-            this.trendingOption.click();
-
-            Thread.sleep(3000);
+        if(this.newsOption.isDisplayed() && this.newsOption.isEnabled()){
             this.newsOption.click();
-            this.newsOptionTitle.getText();
+            titleNewsPage=this.newsOptionTitle.getText();
         }
+        }
+        return titleNewsPage;
     }
 
-    public void redirectsMoviesPage() throws InterruptedException {
+    public String redirectsMoviesPage() throws InterruptedException {
+        String titleMoviesPage= null;
         if (this.trendingOption.isDisplayed() && this.trendingOption.isEnabled()) {
             this.trendingOption.click();
 
             Thread.sleep(3000);
+        if (this.moviesOption.isDisplayed() && this.moviesOption.isEnabled()) {
             this.moviesOption.click();
-            this.moviesOptionTitle.getText();
+            titleMoviesPage=this.moviesOptionTitle.getText();
         }
+        }
+        return titleMoviesPage;
     }
 
-    public void redirectsSubscriptionPage() throws InterruptedException {
+    public String redirectsSubscriptionPage() throws InterruptedException {
+        String titleSubscriptionPage = null;
         if (this.subscriptionsOption.isDisplayed() && this.subscriptionsOption.isEnabled())
         { this.subscriptionsOption.click();
+
             Thread.sleep(3000);
-            this.subscriptionsMessage.getText();
+            if(this.subscriptionsMessage.isDisplayed() && this.subscriptionsMessage.isEnabled()) {
+                titleSubscriptionPage = this.subscriptionsMessage.getText();
+            }
         }
+        return titleSubscriptionPage;
     }
 
-    public void redirectsLibraryPage() throws InterruptedException {
-        if (this.libraryOption.isDisplayed() && this.libraryOption.isEnabled())
-        { this.libraryOption.click();
+    public String redirectsLibraryPage() throws InterruptedException {
+        String titleLibraryPage= null;
+        if (this.libraryOption.isDisplayed() && this.libraryOption.isEnabled()) {
+            this.libraryOption.click();
+
             Thread.sleep(3000);
-            this.libraryMessage.getText();
+            if(this.libraryMessage.isDisplayed()&& this.libraryMessage.isEnabled()) {
+                titleLibraryPage = this.libraryMessage.getText();
+            }
         }
+        return titleLibraryPage;
     }
 
-    public void redirectsHistoryPage() throws InterruptedException {
-        if (this.historyOption.isDisplayed() && this.historyOption.isEnabled())
-        { this.historyOption.click();
+    public String redirectsHistoryPage() throws InterruptedException {
+        String titleHistoryPage= null;
+        if (this.historyOption.isDisplayed() && this.historyOption.isEnabled()) {
+            this.historyOption.click();
+
             Thread.sleep(3000);
-            this.historyMessage.getText();
+            if (this.historyMessage.isDisplayed()&&this.historyOption.isEnabled()) {
+                titleHistoryPage = this.historyMessage.getText();
+            }
         }
+        return titleHistoryPage;
     }
 }
