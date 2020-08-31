@@ -84,6 +84,7 @@
                     </argLine>
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/suites/youtube.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/suites/regression.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>

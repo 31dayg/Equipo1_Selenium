@@ -75,7 +75,14 @@ public class YoutubePageObject extends BasePageObject {
 
 
     public void clickOnSelectedVideo(int index) {
-        this.resultSearchList.get(index).click();
+        try{
+            this.resultSearchList.get(index).click();
+        }
+        catch (Exception e) {
+            driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+            this.resultSearchList.get(index).click();
+        }
+
     }
 
     public boolean lookForSearchRelated() {

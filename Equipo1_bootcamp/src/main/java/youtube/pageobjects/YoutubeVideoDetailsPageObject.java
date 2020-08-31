@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class YoutubeVideoDetailsPageObject extends BasePageObject{
 
@@ -76,6 +77,7 @@ public class YoutubeVideoDetailsPageObject extends BasePageObject{
     }
 
     public String getTotalComments() {
+        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         return this.comments.getText();
     }
 

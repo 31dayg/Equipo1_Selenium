@@ -6,6 +6,7 @@ import youtube.pageobjects.YoutubePageObject;
 import youtube.pageobjects.YoutubeVideoDetailsPageObject;
 
 import java.util.SplittableRandom;
+import java.util.concurrent.TimeUnit;
 
 public class YoutubeUserStepsVideoDetails {
 
