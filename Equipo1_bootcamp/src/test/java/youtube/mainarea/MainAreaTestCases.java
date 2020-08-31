@@ -2,13 +2,16 @@ package youtube.mainarea;
 
 import com.sun.org.glassfish.gmbal.Description;
 import io.qameta.allure.Story;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import utils.PropertyReader;
+import utils.listeners.TestListener;
 import youtube.BaseTestCase;
 import youtube.steps.YoutubeUserStepsMain;
 import youtube.steps.YoutubeUserStepsVideoDetails;
 
+@Listeners({ TestListener.class})
 public class MainAreaTestCases extends BaseTestCase {
     @Test
     @Description("Un usuario sin iniciar sesion quiere ver las categorias de Video: Recomendados, Tendencias &  Noticias")

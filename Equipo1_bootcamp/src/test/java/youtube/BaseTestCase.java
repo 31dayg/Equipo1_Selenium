@@ -32,4 +32,7 @@ public class BaseTestCase {
         myDriver.quit();
     }
 
+    public WebDriver getWebDriver() {
+        return this.myDriver;
+    }
 }
