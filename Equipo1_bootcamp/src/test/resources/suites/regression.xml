@@ -1,0 +1,34 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression" verbose="1">
+    <test name="Main">
+        <groups>
+            <run>
+                <include name="Regression" />
+            </run>
+        </groups>
+        <classes>
+            <class name="youtube.mainarea.MainAreaTestCases"></class>
+        </classes>
+    </test>
+    <test name="Left Menu">
+        <groups>
+            <run>
+                <include name="Regression" />
+            </run>
+        </groups>
+        <classes>
+            <class name="youtube.leftmenu.LeftMenuTestCases"></class>
+        </classes>
+    </test>
+    <test name="Header">
+        <groups>
+            <run>
+                <include name="Regression" />
+            </run>
+        </groups>
+        <classes>
+            <class name="youtube.header.HeaderTestCases"></class>
+        </classes>
+    </test>
+
+</suite>

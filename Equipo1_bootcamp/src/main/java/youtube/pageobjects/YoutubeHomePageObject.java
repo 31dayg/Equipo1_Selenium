@@ -31,40 +31,40 @@ public class YoutubeHomePageObject extends BasePageObject {
     @FindBy(how = How.XPATH, using = "//div[@class='channel-list-sub-menu-avatars channel-list-sub-menu-large-avatars']//a")
     private List<WebElement> subOptionsTrending;
 
-    @FindBy(how = How.XPATH, using = "//a[@class='yt-simple-endpoint style-scope ytd-channel-list-sub-menu-avatar-renderer'][contains(@href,'/feed/trending')]//img[contains(@src,'//youtube.com/img/trending/chips/music_80x80.png')]")
+    @FindBy(how = How.XPATH, using = "//div[@id='sub-menu']/descendant::a[1]")
     private WebElement musicOption;
 
-    @FindBy(how = How.XPATH, using = "//ytd-text-header-renderer[contains(text(),'Música')]")
+    @FindBy(how = How.XPATH, using = "//ytd-text-header-renderer[contains(text(),'Music')]")
     private WebElement musicOptionTitle;
 
-    @FindBy(how = How.XPATH, using = "//a[@class='yt-simple-endpoint style-scope ytd-channel-list-sub-menu-avatar-renderer'][contains(@href,'/feed/trending')]//img[contains(@src,'//youtube.com/img/trending/chips/gaming_80x80.png')]")
+    @FindBy(how = How.XPATH, using = "//div[@id='sub-menu']/descendant::a[2]")
     private WebElement gaminOption;
 
-    @FindBy(how = How.XPATH, using = "//ytd-text-header-renderer[contains(text(),'Videojuegos')]")
+    @FindBy(how = How.XPATH, using = "//ytd-text-header-renderer[contains(text(),'Gaming')]")
     private WebElement gaminOptionTitle;
 
     @FindBy(how = How.XPATH, using = "//ytd-channel-list-sub-menu-avatar-renderer[3]//a[1]")
     private WebElement newsOption;
 
-    @FindBy(how = How.XPATH, using = "//ytd-text-header-renderer[contains(text(),'Noticias')]")
+    @FindBy(how = How.XPATH, using = "//ytd-text-header-renderer[contains(text(),'News')]")
     private WebElement newsOptionTitle;
 
     @FindBy(how = How.XPATH, using = "//ytd-channel-list-sub-menu-avatar-renderer[4]//a[1]")
     private WebElement moviesOption;
 
-    @FindBy(how = How.XPATH, using = "//ytd-text-header-renderer[contains(text(),'Películas')]")
+    @FindBy(how = How.XPATH, using = "//ytd-text-header-renderer[contains(text(),'Movies')]")
     private WebElement moviesOptionTitle;
 
     @FindBy(how = How.XPATH, using = "//ytd-guide-entry-renderer//a[@id='endpoint'][contains(@href,'/feed/subscriptions')]")
     private WebElement subscriptionsOption;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'No te pierdas los nuevos videos')]")
+    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Don’t miss new videos')]")
     private WebElement subscriptionsMessage;
 
     @FindBy(how = How.XPATH, using = "//ytd-guide-entry-renderer//a[@id='endpoint'][contains(@href,'/feed/library')]")
     private WebElement libraryOption;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Disfruta de tus videos favoritos')]")
+    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Enjoy your favorite videos')]")
     private WebElement libraryMessage;
 
     @FindBy(how = How.XPATH, using = "//ytd-guide-entry-renderer//a[@id='endpoint'][contains(@href,'/feed/history')]")
@@ -144,7 +144,7 @@ public class YoutubeHomePageObject extends BasePageObject {
         int x = 0;
         int totalCategories = 0;
         while (x < results.size()) {
-            if (results.get(x).contains("Principal") && results.get(x).contains("Tendencias") && results.get(x).contains("Suscripciones") && results.get(x).contains("Biblioteca") && results.get(x).contains("Historial")) {
+            if (results.get(x).contains("Home") && results.get(x).contains("Trending") && results.get(x).contains("Subscriptions") && results.get(x).contains("Library") && results.get(x).contains("History")) {
                 totalCategories++;
             }
             x++;
@@ -167,7 +167,7 @@ public class YoutubeHomePageObject extends BasePageObject {
         int x=0;
         int totalTitles=0;
         while(x<results.size()){
-            if(results.get(x).contains("Tendencias") && results.get(x).contains("Noticias sobre el COVID‑19")){
+            if(results.get(x).contains("Trending") && results.get(x).contains("COVID-19 news")){
                 totalTitles++;
             }
             x++;
@@ -189,7 +189,7 @@ public class YoutubeHomePageObject extends BasePageObject {
             int x = 0;
             int totalIcons = 0;
             while (x < results.size()) {
-                if (results.get(x).contains("Musica") && results.get(x).contains("Videojuegos") && results.get(x).contains("Noticias") && results.get(x).contains("Películas")) {
+                if (results.get(x).contains("Music") && results.get(x).contains("Gaming") && results.get(x).contains("News") && results.get(x).contains("Movies")) {
                     totalIcons++;
                 }
                 x++;

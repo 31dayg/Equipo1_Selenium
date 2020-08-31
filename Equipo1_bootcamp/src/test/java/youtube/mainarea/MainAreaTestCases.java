@@ -16,7 +16,7 @@ import youtube.steps.YoutubeUserStepsVideoDetails;
 
 @Listeners({TestListener.class})
 public class MainAreaTestCases extends BaseTestCase {
-    @Test
+    @Test(groups = {"Regression", "Happy path"})
     @Description("Un usuario sin iniciar sesion quiere ver las categorias de Video: Recomendados, Tendencias &  Noticias")
     @Story("Probar las categorias de video")
     public void test1_VideoCategories() {
@@ -29,7 +29,7 @@ public class MainAreaTestCases extends BaseTestCase {
         softAssertion.assertAll();
     }
 
-    @Test
+    @Test(groups = {"Regression", "Happy path"})
     @Description("Un usuario sin iniciar sesion quiere ver los siguientes componentes de video:  Titulo del video, Autor del video, Numero de visualizaciones y el thumbnail del video")
     @Story("Probar la visualizacion esperada de los componentes de video")
     public void test2_VideoComponents() {
@@ -55,7 +55,7 @@ public class MainAreaTestCases extends BaseTestCase {
         softAssertion.assertAll();
     }
 
-    @Test
+    @Test(groups = {"Regression", "Happy path"})
     @Description("Un usuario sin iniciar sesion quiere reproducir un video.")
     @Story("Probar la reproduccion de videos")
     public void test3b_VideoPlaybackByThumbnail() {
@@ -68,7 +68,7 @@ public class MainAreaTestCases extends BaseTestCase {
         softAssertion.assertAll();
     }
 
-    @Test
+    @Test(groups = {"Regression", "Happy path"})
     @Description("Un usuario sin iniciar sesión quiere ver los siguientes detalles: título del video, número de visualizaciones, número de me gusta, número de no me gusta, descripción del video y comentarios.")
     @Story("Probar la visualización esperada de detalles del video")
     public void test4_VideoDetails() {
@@ -129,6 +129,7 @@ public class MainAreaTestCases extends BaseTestCase {
                 Integer.parseInt(PropertyReader.getProperty("youtube.properties", "INDEX")));
         System.out.println("Video Played: " + youtubeUserStepsVideoDetails.getTitleVideo());
         youtubeUserStepsVideoDetails.clickOnYoutubeIcon();
+        System.out.println("New URL: " + myDriver.getCurrentUrl());
         softAssertion.assertEquals(myDriver.getCurrentUrl(),
                 PropertyReader.getProperty("youtube.properties", "YOUTUBE_URL"),"Header is not working");
         softAssertion.assertAll();

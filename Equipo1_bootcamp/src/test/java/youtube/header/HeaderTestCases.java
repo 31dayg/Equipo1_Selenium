@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @Listeners({ TestListener.class})
 public class HeaderTestCases extends BaseTestCase {
 
-    @Test
+    @Test(groups = {"Regression", "Happy path"})
     @Description("Un usuario sin iniciar sesion quiere buscar un video.")
     @Story("Probar la busqueda de Youtube")
     public void test1_SearchVideo() {

@@ -14,7 +14,7 @@ import static utils.PropertyReader.getProperty;
 
 @Listeners({TestListener.class})
 public class LeftMenuTestCases extends BaseTestCase {
-    @Test
+    @Test(groups = {"Regression", "Happy path"})
     @Description("El usuario no logueado puede ver todas las opciones del menu izquierdo: Principal, Tendencies, Subscriptions, Biblioteca, Historia")
     @Story("Probar que las opciones del menu izquierdo se muestren")
     public void test1_OpcionesMenuIzquierdoHabilitadas() {
@@ -64,8 +64,8 @@ public class LeftMenuTestCases extends BaseTestCase {
         SoftAssert softAssertion = new SoftAssert();
         YoutubeUserStepsMain youtubeUserStepsMain = new YoutubeUserStepsMain(this.myDriver);
         youtubeUserStepsMain.getMusicTrendingCategory();
-        softAssertion.assertEquals(myDriver.getCurrentUrl(),"https://www.youtube.com/feed/trending?bp=4gIuCggvbS8wNHJsZhIiUExGZ3F1TG5MNTlhbnFiUXFKUjlkNUIzU0dvdUFKd05Jcg%3D%3D");
-        softAssertion.assertEquals(youtubeUserStepsMain.getMusicTrendingCategory(),"Música");
+        softAssertion.assertEquals(myDriver.getCurrentUrl(),"https://www.youtube.com/feed/trending?bp=4gIuCggvbS8wNHJsZhIiUExGZ3F1TG5MNTlhbVBud2pLbmNhZUp3MDYzZlU1M3Q0cA%3D%3D");
+        softAssertion.assertEquals(youtubeUserStepsMain.getMusicTrendingCategory(),"Music");
         softAssertion.assertAll();
     }
 
@@ -77,8 +77,8 @@ public class LeftMenuTestCases extends BaseTestCase {
         SoftAssert softAssertion = new SoftAssert();
         YoutubeUserStepsMain youtubeUserStepsMain = new YoutubeUserStepsMain(this.myDriver);
         youtubeUserStepsMain.getGamingTrendingCategory();
-        softAssertion.assertEquals(myDriver.getCurrentUrl(),"https://www.youtube.com/feed/trending?bp=4gIvCgkvbS8wYnp2bTISIlBMaUN2Vkp6QnVwS251cjFaLVJEUGZpTGgyMXF2TFJLZTA%3D");
-        softAssertion.assertEquals(youtubeUserStepsMain.getGamingTrendingCategory(),"Videojuegos");
+        softAssertion.assertEquals(myDriver.getCurrentUrl(),"https://www.youtube.com/feed/trending?bp=4gIvCgkvbS8wYnp2bTISIlBMaUN2Vkp6QnVwS2tDaFNnUDdGWFhDclo2aEp4NmtlTm0%3D");
+        softAssertion.assertEquals(youtubeUserStepsMain.getGamingTrendingCategory(),"Gaming");
         softAssertion.assertAll();
     }
 
@@ -90,8 +90,8 @@ public class LeftMenuTestCases extends BaseTestCase {
         SoftAssert softAssertion = new SoftAssert();
         YoutubeUserStepsMain youtubeUserStepsMain = new YoutubeUserStepsMain(this.myDriver);
         youtubeUserStepsMain.getNewsTrendingCategory();
-        softAssertion.assertEquals(myDriver.getCurrentUrl(),"https://www.youtube.com/feed/trending?bp=4gIuCggvbS8wNWpoZxIiUEwzWlE1Q3BOdWxRbGVUQzVBLUkxSGQxS0ptaFctTDczXw%3D%3D");
-        softAssertion.assertEquals(youtubeUserStepsMain.getNewsTrendingCategory(),"Noticias");
+        softAssertion.assertEquals(myDriver.getCurrentUrl(),"https://www.youtube.com/feed/trending?bp=4gIuCggvbS8wNWpoZxIiUEwzWlE1Q3BOdWxRbUtPUDNJekdsYWN0V1c4dklYX0hFUA%3D%3D");
+        softAssertion.assertEquals(youtubeUserStepsMain.getNewsTrendingCategory(),"News");
         softAssertion.assertAll();
     }
 
@@ -103,8 +103,8 @@ public class LeftMenuTestCases extends BaseTestCase {
         SoftAssert softAssertion = new SoftAssert();
         YoutubeUserStepsMain youtubeUserStepsMain = new YoutubeUserStepsMain(this.myDriver);
         youtubeUserStepsMain.getMoviesTrendingCategory();
-        softAssertion.assertEquals(myDriver.getCurrentUrl(),"https://www.youtube.com/feed/trending?bp=4gIuCggvbS8wMnZ4bhIiUEx6akZiYUZ6c21NUXgwU0lSRUR2VVZsSGgzNXJEOExZUg%3D%3D");
-        softAssertion.assertEquals(youtubeUserStepsMain.getMoviesTrendingCategory(),"Películas");
+        softAssertion.assertEquals(myDriver.getCurrentUrl(),"https://www.youtube.com/feed/trending?bp=4gIuCggvbS8wMnZ4bhIiUEx6akZiYUZ6c21NUnFhdEJnVTdPeGNGTkZhQ2hqTkVERA%3D%3D");
+        softAssertion.assertEquals(youtubeUserStepsMain.getMoviesTrendingCategory(),"Movies");
         softAssertion.assertAll();
     }
 
@@ -117,7 +117,7 @@ public class LeftMenuTestCases extends BaseTestCase {
         YoutubeUserStepsMain youtubeUserStepsMain = new YoutubeUserStepsMain(this.myDriver);
         youtubeUserStepsMain.getSusbcriptionsCategory();
         softAssertion.assertEquals(myDriver.getCurrentUrl(),"https://www.youtube.com/feed/subscriptions");
-        softAssertion.assertEquals(youtubeUserStepsMain.getSusbcriptionsCategory(),"No te pierdas los nuevos videos");
+        softAssertion.assertEquals(youtubeUserStepsMain.getSusbcriptionsCategory(),"Don’t miss new videos");
         softAssertion.assertAll();
 
 
@@ -132,7 +132,7 @@ public class LeftMenuTestCases extends BaseTestCase {
         YoutubeUserStepsMain youtubeUserStepsMain = new YoutubeUserStepsMain(this.myDriver);
         youtubeUserStepsMain.getLibraryCategory();
         softAssertion.assertEquals(myDriver.getCurrentUrl(),"https://www.youtube.com/feed/library");
-        softAssertion.assertEquals(youtubeUserStepsMain.getLibraryCategory(),"Disfruta de tus videos favoritos");
+        softAssertion.assertEquals(youtubeUserStepsMain.getLibraryCategory(),"Enjoy your favorite videos");
         softAssertion.assertAll();
     }
 
@@ -145,7 +145,7 @@ public class LeftMenuTestCases extends BaseTestCase {
         YoutubeUserStepsMain youtubeUserStepsMain = new YoutubeUserStepsMain(this.myDriver);
         youtubeUserStepsMain.getHistoryCategory();
         softAssertion.assertEquals(myDriver.getCurrentUrl(),"https://www.youtube.com/feed/history");
-        softAssertion.assertEquals(youtubeUserStepsMain.getHistoryCategory(),"Haz un seguimiento de lo que miras");
+        softAssertion.assertEquals(youtubeUserStepsMain.getHistoryCategory(),"Keep track of what you watch");
         softAssertion.assertAll();
     }
 

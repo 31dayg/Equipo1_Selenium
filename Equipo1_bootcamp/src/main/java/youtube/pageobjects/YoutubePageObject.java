@@ -13,8 +13,6 @@ import java.util.concurrent.TimeUnit;
 
 public class YoutubePageObject extends BasePageObject {
 
-    // DEFINIR ELEMENTOS DE HEADER Y DE LEFT MENU
-
     @FindBy(how = How.XPATH, using = "//input[@id = 'search']")
     private WebElement searchBox;
 
