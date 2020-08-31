@@ -45,8 +45,8 @@ public class YoutubeUserStepsVideoDetails {
         return this.youtubeVideoDetailsPageObject.getVideoDescription();
     }
 
-    public int getTotalComments() {
-        return this.youtubeVideoDetailsPageObject.getTotalComments();
+    public int getComments() {
+        return this.youtubeVideoDetailsPageObject.getComments();
     }
 
     public void getRelatedVideos() {

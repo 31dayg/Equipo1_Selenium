@@ -29,7 +29,7 @@ public class YoutubeVideoDetailsPageObject extends BasePageObject{
     @FindBy(how = How.XPATH, using = "//div[@id='description']/yt-formatted-string")
     private WebElement videoDescription;
 
-    @FindBy(how = How.XPATH, using = "//div[@id='contents']/descendant::ytd-comment-thread-renderer")
+    @FindBy(how = How.XPATH, using = "//div[@id='contents']/descendant::div[@id='body']")
     private List<WebElement> comments;
 
     @FindBy(how = How.XPATH, using = "//ytd-watch-next-secondary-results-renderer/div[@id='items']/descendant::*[@class='style-scope ytd-watch-next-secondary-results-renderer']//span[@id='video-title']")
@@ -75,7 +75,7 @@ public class YoutubeVideoDetailsPageObject extends BasePageObject{
         return this.videoDescription.getTagName();
     }
 
-    public int getTotalComments() {
+    public int getComments() {
         return this.comments.size();
     }
 

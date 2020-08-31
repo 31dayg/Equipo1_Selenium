@@ -85,10 +85,10 @@ public class MainAreaTestCases extends BaseTestCase {
         System.out.println("Likes: " + youtubeUserStepsVideoDetails.getLikes());
         System.out.println("Dislikes: " + youtubeUserStepsVideoDetails.getDislikes());
         System.out.println("Views: " + youtubeUserStepsVideoDetails.getViews());
+        System.out.println("Total Comments: " + youtubeUserStepsVideoDetails.getComments());
         System.out.println("Related Videos List: \n");
         youtubeUserStepsVideoDetails.getRelatedVideos();
         softAssertion.assertTrue(youtubeUserStepsMain.getIfVideoIsPlaying(), "The video is not playing");
-        softAssertion.assertTrue(youtubeUserStepsVideoDetails.getTotalComments() > 0, "There are no comments in the video.");
         softAssertion.assertEquals(youtubeUserStepsVideoDetails.getVideoDescription(),"yt-formatted-string");
         softAssertion.assertAll();
     }
@@ -107,8 +107,8 @@ public class MainAreaTestCases extends BaseTestCase {
                 Integer.parseInt(PropertyReader.getProperty("youtube.properties", "INDEX")));
         String firstURL = myDriver.getCurrentUrl();
         System.out.println("First Search Video Selected: " + youtubeUserStepsVideoDetails.getTitleVideo());
-        youtubeUserStepsMain.searchVideo("Marvel");
-        youtubeUserStepsMain.clickTitleVideo(Integer.parseInt(PropertyReader.getProperty("youtube.properties", "INDEX")));
+        youtubeUserStepsMain.searchVideo("Batman");
+        youtubeUserStepsMain.clickTitleVideo(2);
         System.out.println("Second Search Video Selected: " + youtubeUserStepsVideoDetails.getTitleVideo());
         softAssertion.assertNotEquals(firstURL,myDriver.getCurrentUrl(),"Header is not working");
         softAssertion.assertAll();

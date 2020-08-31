@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite Youtube Site" verbose="1">
+    <test name="Header">
+        <classes>
+            <class name="youtube.header.HeaderTestCases"></class>
+        </classes>
+    </test>
+    <test name="Left Menu">
+        <classes>
+            <class name="youtube.leftmenu.LeftMenuTestCases"></class>
+        </classes>
+    </test>
+    <test name="Main Area">
+        <classes>
+            <class name="youtube.mainarea.MainAreaTestCases"></class>
+        </classes>
+    </test>
+
+</suite>
