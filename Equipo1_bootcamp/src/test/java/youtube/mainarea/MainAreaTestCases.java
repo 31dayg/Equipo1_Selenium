@@ -2,6 +2,8 @@ package youtube.mainarea;
 
 import com.sun.org.glassfish.gmbal.Description;
 import io.qameta.allure.Story;
+
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -9,29 +11,61 @@ import utils.PropertyReader;
 import utils.listeners.TestListener;
 import youtube.BaseTestCase;
 import youtube.steps.YoutubeUserStepsMain;
+import static utils.PropertyReader.getProperty;
 import youtube.steps.YoutubeUserStepsVideoDetails;
 
-@Listeners({ TestListener.class})
+@Listeners({TestListener.class})
 public class MainAreaTestCases extends BaseTestCase {
     @Test
     @Description("Un usuario sin iniciar sesion quiere ver las categorias de Video: Recomendados, Tendencias &  Noticias")
     @Story("Probar las categorias de video")
     public void test1_VideoCategories() {
-
+        this.myDriver.get(getProperty("youtube.properties", "YOUTUBE_URL"));
+        SoftAssert softAssertion = new SoftAssert();
+        YoutubeUserStepsMain youtubeUserStepsMain = new YoutubeUserStepsMain(this.myDriver);
+        youtubeUserStepsMain.getTitleTrending();
+        softAssertion.assertEquals(myDriver.getCurrentUrl(),"https://www.youtube.com/");
+        softAssertion.assertTrue(youtubeUserStepsMain.getVideoCategories() >=2, "Videos not available on Main page");
+        softAssertion.assertAll();
     }
 
     @Test
     @Description("Un usuario sin iniciar sesion quiere ver los siguientes componentes de video:  Titulo del video, Autor del video, Numero de visualizaciones y el thumbnail del video")
     @Story("Probar la visualizacion esperada de los componentes de video")
     public void test2_VideoComponents() {
-
+        this.myDriver.get(getProperty("youtube.properties", "YOUTUBE_URL"));
+        SoftAssert softAssertion = new SoftAssert();
+        YoutubeUserStepsMain youtubeUserStepsMain = new YoutubeUserStepsMain(this.myDriver);
+        youtubeUserStepsMain.getVideoComponents();
+        softAssertion.assertEquals(myDriver.getCurrentUrl(),"https://www.youtube.com/");
+        softAssertion.assertTrue(youtubeUserStepsMain.getVideoComponents(),"Details Video not available");
+        softAssertion.assertAll();
     }
 
     @Test
     @Description("Un usuario sin iniciar sesion quiere reproducir un video.")
     @Story("Probar la reproduccion de videos")
-    public void test3_VideoPlayback() {
+    public void test3a_VideoPlaybackByTitle() {
+        this.myDriver.get(getProperty("youtube.properties", "YOUTUBE_URL"));
+        SoftAssert softAssertion = new SoftAssert();
+        YoutubeUserStepsMain youtubeUserStepsMain = new YoutubeUserStepsMain(this.myDriver);
+        youtubeUserStepsMain.getVideoPlaybackByTitle();
+        youtubeUserStepsMain.clickVideoByTitle(1);
+        softAssertion.assertTrue(youtubeUserStepsMain.getIfVideoIsPlaying(), "No video playing");
+        softAssertion.assertAll();
+    }
 
+    @Test
+    @Description("Un usuario sin iniciar sesion quiere reproducir un video.")
+    @Story("Probar la reproduccion de videos")
+    public void test3b_VideoPlaybackByThumbnail() {
+        this.myDriver.get(getProperty("youtube.properties", "YOUTUBE_URL"));
+        SoftAssert softAssertion = new SoftAssert();
+        YoutubeUserStepsMain youtubeUserStepsMain = new YoutubeUserStepsMain(this.myDriver);
+        youtubeUserStepsMain.getVideoPlaybackByThumbnail();
+        youtubeUserStepsMain.clickVideoByThumbnail(2);
+        softAssertion.assertTrue(youtubeUserStepsMain.getIfVideoIsPlaying(), "No video playing");
+        softAssertion.assertAll();
     }
 
     @Test

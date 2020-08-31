@@ -12,7 +12,7 @@ public class WebDriverFactory {
     public static WebDriver getDriver(String browser) {
         File rootPath = new File("src/test/resources/drivers");
         if(browser.toLowerCase().equals("chrome")) {
-            File chromeFilePath = new File(rootPath, "chromedriver.exe");
+            File chromeFilePath = new File(rootPath, getDriverName());
             System.setProperty("webdriver.chrome.driver", chromeFilePath.getPath());
             return new ChromeDriver();
         } else if (browser.toLowerCase().equals("firefox")) {
@@ -22,5 +22,12 @@ public class WebDriverFactory {
         } else {
             return null;
         }
+    }
+    public static String getDriverName(){
+        String operSys = System.getProperty("os.name").toLowerCase();
+        if (operSys.contains("mac")) {
+            return "chromedriver";
+        }
+        return "chromedriver.exe";
     }
 }

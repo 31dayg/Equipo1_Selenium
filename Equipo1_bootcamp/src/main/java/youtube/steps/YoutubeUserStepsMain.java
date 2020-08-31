@@ -118,5 +118,27 @@ public class YoutubeUserStepsMain {
         return this.youtubeHomePageObject.redirectsHistoryPage();
     }
 
+    //MAIN PAGE
+    public int getVideoCategories(){
+        return this.youtubeHomePageObject.getVideoCategoriesMain();
+
+    }
+
+    public boolean getVideoComponents(){
+        return this.youtubeHomePageObject.getVideoComponents();
+    }
+
+    public void getVideoPlaybackByTitle(){
+        this.youtubeHomePageObject.getVideoPlayback();
+    }
+    public void getVideoPlaybackByThumbnail(){
+        this.youtubeHomePageObject.getVideoPlaybackByThumbnail();
+    }
+    public void clickVideoByTitle(int index) {
+        this.youtubeHomePageObject.clickOnSelectedVideoByTitle(index);
+    }
+    public void clickVideoByThumbnail(int index){
+        this.youtubeHomePageObject.clickOnSelectedVideoByThumbnail(index);
+    }
 
 }

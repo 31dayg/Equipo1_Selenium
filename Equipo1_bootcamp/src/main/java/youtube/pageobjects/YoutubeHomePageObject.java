@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,19 +25,19 @@ public class YoutubeHomePageObject extends BasePageObject {
     @FindBy(how = How.XPATH, using = "//div[@id='contents']//div[@id='dismissable']")
     private List<WebElement> contentVideoList;
 
-    @FindBy(how = How.XPATH, using = "//yt-formatted-string[contains(text(),'Trending')]")
+    @FindBy(how = How.XPATH, using = "//ytd-guide-entry-renderer//a[@id='endpoint'][contains(@href,'/feed/trending')]")
     private WebElement trendingOption;
 
-    @FindBy(how = How.XPATH, using = "//div[@id='sub-menu']//div[@id='contents']//*[a]")
+    @FindBy(how = How.XPATH, using = "//div[@class='channel-list-sub-menu-avatars channel-list-sub-menu-large-avatars']//a")
     private List<WebElement> subOptionsTrending;
 
-    @FindBy(how = How.XPATH, using = "//ytd-channel-list-sub-menu-avatar-renderer[1]//a[1]")
+    @FindBy(how = How.XPATH, using = "//a[@class='yt-simple-endpoint style-scope ytd-channel-list-sub-menu-avatar-renderer'][contains(@href,'/feed/trending')]//img[contains(@src,'//youtube.com/img/trending/chips/music_80x80.png')]")
     private WebElement musicOption;
 
     @FindBy(how = How.XPATH, using = "//ytd-text-header-renderer[contains(text(),'Música')]")
     private WebElement musicOptionTitle;
 
-    @FindBy(how = How.XPATH, using = "//ytd-channel-list-sub-menu-avatar-renderer[2]//a[1]")
+    @FindBy(how = How.XPATH, using = "//a[@class='yt-simple-endpoint style-scope ytd-channel-list-sub-menu-avatar-renderer'][contains(@href,'/feed/trending')]//img[contains(@src,'//youtube.com/img/trending/chips/gaming_80x80.png')]")
     private WebElement gaminOption;
 
     @FindBy(how = How.XPATH, using = "//ytd-text-header-renderer[contains(text(),'Videojuegos')]")
@@ -53,19 +55,19 @@ public class YoutubeHomePageObject extends BasePageObject {
     @FindBy(how = How.XPATH, using = "//ytd-text-header-renderer[contains(text(),'Películas')]")
     private WebElement moviesOptionTitle;
 
-    @FindBy(how = How.XPATH, using = "//yt-formatted-string[contains(text(),'Suscripciones')]")
+    @FindBy(how = How.XPATH, using = "//ytd-guide-entry-renderer//a[@id='endpoint'][contains(@href,'/feed/subscriptions')]")
     private WebElement subscriptionsOption;
 
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'No te pierdas los nuevos videos')]")
     private WebElement subscriptionsMessage;
 
-    @FindBy(how = How.XPATH, using = "//yt-formatted-string[contains(text(),'Biblioteca')]")
+    @FindBy(how = How.XPATH, using = "//ytd-guide-entry-renderer//a[@id='endpoint'][contains(@href,'/feed/library')]")
     private WebElement libraryOption;
 
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'Disfruta de tus videos favoritos')]")
     private WebElement libraryMessage;
 
-    @FindBy(how = How.XPATH, using = "//yt-formatted-string[contains(text(),'Historial')]")
+    @FindBy(how = How.XPATH, using = "//ytd-guide-entry-renderer//a[@id='endpoint'][contains(@href,'/feed/history')]")
     private WebElement historyOption;
 
     @FindBy(how = How.XPATH, using = "//yt-formatted-string[@id='message']")
@@ -75,9 +77,61 @@ public class YoutubeHomePageObject extends BasePageObject {
     private List<WebElement> resultsSearchCategories;
 
     // AQUI VAN LOS ELEMENTOS DEL MAIN AREA EN HOME.
+    @FindBy(how = How.XPATH, using = ("//ytd-rich-item-renderer[@class='style-scope ytd-rich-shelf-renderer']//a[@id='thumbnail']"))
+    private List<WebElement> listVideosMainTrending;
+
+    @FindBy(how = How.XPATH, using = ("//div[@id='details']"))
+    //"//h3[@class='style-scope ytd-rich-grid-video-renderer']//a[@id=\"video-title-link\"]"))
+    private List<WebElement> listVideoTitle;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='dismissable']//a[@id='thumbnail']")
+    private List<WebElement> videoThumbnail;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='details']//a[@id='video-title-link']")
+    private List<WebElement> linkTitleVideo;
 
     public YoutubeHomePageObject(WebDriver driver) {
         super(driver, driver.getCurrentUrl());
+    }
+
+    public int getVideoCategoriesMain() {
+        int totalVideosTrending=0;
+        for (WebElement element : listVideosMainTrending) {
+            System.out.println("Videos dentro del main: "+element.getAttribute("href"));
+            totalVideosTrending++;
+        }
+        return totalVideosTrending;
+    }
+
+    public boolean getVideoComponents(){
+        boolean flagDetails = false;
+        for (WebElement element : listVideoTitle) {
+            if (element.isDisplayed() && element.isEnabled()) {
+                System.out.println("Detalles del Video: " + element.getText());
+                flagDetails=true;
+            }
+        }
+        return flagDetails;
+    }
+
+    public void clickOnSelectedVideoByTitle(int index) {
+        this.linkTitleVideo.get(index).click();
+    }
+
+    public void clickOnSelectedVideoByThumbnail(int index){
+        this.videoThumbnail.get(index).click();
+    }
+
+    public void getVideoPlayback(){
+        for(WebElement element: linkTitleVideo){
+            System.out.println("Link del Video por Titulo: " + element.getAttribute("href"));
+        }
+    }
+
+    public void getVideoPlaybackByThumbnail(){
+        for(WebElement element: videoThumbnail){
+            System.out.println("Link del Video por Thumbnail: " + element.getAttribute("href"));
+        }
     }
 
     public int getOptionsLeftMenuList() {
