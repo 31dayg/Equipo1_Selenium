@@ -50,7 +50,7 @@
         <resources>
             <resource>
                 <directory>src/test/resources</directory>
-            </resource>>
+            </resource>
         </resources>
         <plugins>
             <plugin>
