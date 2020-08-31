@@ -83,7 +83,7 @@
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/suites/testng_suite1.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/suites/youtube.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>

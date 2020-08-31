@@ -29,8 +29,8 @@ public class YoutubeVideoDetailsPageObject extends BasePageObject{
     @FindBy(how = How.XPATH, using = "//div[@id='description']/yt-formatted-string")
     private WebElement videoDescription;
 
-    @FindBy(how = How.XPATH, using = "//div[@id='contents']/descendant::div[@id='body']")
-    private List<WebElement> comments;
+    @FindBy(how = How.XPATH, using = "//div[@id='title']/h2[@id='count']")
+    private WebElement comments;
 
     @FindBy(how = How.XPATH, using = "//ytd-watch-next-secondary-results-renderer/div[@id='items']/descendant::*[@class='style-scope ytd-watch-next-secondary-results-renderer']//span[@id='video-title']")
     private List<WebElement> relatedVideos;
@@ -75,8 +75,12 @@ public class YoutubeVideoDetailsPageObject extends BasePageObject{
         return this.videoDescription.getTagName();
     }
 
-    public int getComments() {
-        return this.comments.size();
+    public String getTotalComments() {
+        return this.comments.getText();
+    }
+
+    public boolean commentsAreDisplayed() {
+        return this.comments.isDisplayed();
     }
 
     public void getRelatedVideos() {

@@ -85,10 +85,11 @@ public class MainAreaTestCases extends BaseTestCase {
         System.out.println("Likes: " + youtubeUserStepsVideoDetails.getLikes());
         System.out.println("Dislikes: " + youtubeUserStepsVideoDetails.getDislikes());
         System.out.println("Views: " + youtubeUserStepsVideoDetails.getViews());
-        System.out.println("Total Comments: " + youtubeUserStepsVideoDetails.getComments());
+        System.out.println("Total Comments: " + youtubeUserStepsVideoDetails.getTotalComments());
         System.out.println("Related Videos List: \n");
         youtubeUserStepsVideoDetails.getRelatedVideos();
         softAssertion.assertTrue(youtubeUserStepsMain.getIfVideoIsPlaying(), "The video is not playing");
+        softAssertion.assertTrue(youtubeUserStepsVideoDetails.commentsAreDisplayed(), "Comments are not getting displayed");
         softAssertion.assertEquals(youtubeUserStepsVideoDetails.getVideoDescription(),"yt-formatted-string");
         softAssertion.assertAll();
     }

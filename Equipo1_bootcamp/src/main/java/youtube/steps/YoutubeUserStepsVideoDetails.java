@@ -5,6 +5,8 @@ import youtube.pageobjects.YoutubeHomePageObject;
 import youtube.pageobjects.YoutubePageObject;
 import youtube.pageobjects.YoutubeVideoDetailsPageObject;
 
+import java.util.SplittableRandom;
+
 public class YoutubeUserStepsVideoDetails {
 
     private YoutubeVideoDetailsPageObject youtubeVideoDetailsPageObject;
@@ -45,8 +47,12 @@ public class YoutubeUserStepsVideoDetails {
         return this.youtubeVideoDetailsPageObject.getVideoDescription();
     }
 
-    public int getComments() {
-        return this.youtubeVideoDetailsPageObject.getComments();
+    public String getTotalComments() {
+        return this.youtubeVideoDetailsPageObject.getTotalComments();
+    }
+
+    public boolean commentsAreDisplayed() {
+        return this.youtubeVideoDetailsPageObject.commentsAreDisplayed();
     }
 
     public void getRelatedVideos() {
